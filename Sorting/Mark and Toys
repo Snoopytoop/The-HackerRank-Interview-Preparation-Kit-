@@ -1,0 +1,19 @@
+ public static int maximumToys(List<Integer> prices, int k) {
+    // Write your code here
+    int n = prices.size();
+    int priceCount = 0;
+    int toyCount = 0;
+    
+    Collections.sort(prices);
+    
+    for (int i = 0; i < n; i++) {
+        priceCount += prices.get(i);
+        if (priceCount > k) {
+            break;
+        }
+        toyCount++;
+    }
+    
+    return toyCount;
+     
+    }
