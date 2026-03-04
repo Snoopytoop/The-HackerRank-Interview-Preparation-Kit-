@@ -1,0 +1,44 @@
+public static void checkMagazine(List<String> magazine, List<String> note) {
+    // Write your code here
+    
+    int mSize = magazine.size();
+    int nSize = note.size();
+    
+    if (mSize < nSize) {
+        System.out.println("No");
+        return;
+    }
+    
+    // Adding all words from magazine to a map
+    HashMap<String, List<Integer>> mMap = new HashMap<>();
+    for (int i = 0; i < mSize; i++) {
+        String word = magazine.get(i);
+        mMap.putIfAbsent(word, new ArrayList<>());
+        mMap.get(word).add(i);
+    }
+    
+    boolean containsWords = true;
+    
+    // Checking if map contains all words needed for note
+    for (int i = 0; i < nSize; i++) {
+        String word = note.get(i);
+        
+        if (mMap.containsKey(word)) {
+            mMap.get(word).remove(0);
+            if (mMap.get(word).isEmpty()) {
+                mMap.remove(word);
+            }
+        } else {
+            containsWords = false;
+        }
+    }
+    
+    if (containsWords == true) {
+        System.out.println("Yes");
+    } else {
+        System.out.println("No");
+    }
+    
+    
+
+    }
