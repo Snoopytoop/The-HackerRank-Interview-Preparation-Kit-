@@ -1,0 +1,17 @@
+public static List<Integer> rotLeft(List<Integer> a, int d) {
+    // Write your code here
+    int n = a.size();
+    d = d % n;
+    
+    List<Integer> newList = new ArrayList<>(n);
+    for (int i = 0; i < a.size(); i++) {
+        newList.add(0);   
+    }
+    
+    for (int i = 0; i < n; i++) {
+        newList.set(i, a.get((i + d) % n));
+    }
+
+    return newList;
+    
+}
